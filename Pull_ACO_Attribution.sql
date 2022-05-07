@@ -15,7 +15,6 @@ select empi,
 		ROW_NUMBER() over (partition by empi order by atrdt::date desc,ingdt::date desc) as rowno 
 from l2.pd_attribution
 where lower(atrl)='aco'
---and empi = 'P1081671'
 AND plid IN ('1','2','3','10','22','29')
 and atrdt >= '2021-01-01'
 )
