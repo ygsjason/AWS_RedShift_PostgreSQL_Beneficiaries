@@ -15,14 +15,14 @@ select empi,
 		ROW_NUMBER() over (partition by empi order by atrdt::date desc,ingdt::date desc) as rowno 
 from l2.pd_attribution
 where lower(atrl)='aco'
-AND plid IN ('111','112','113','110','122','129')
-and atrdt >= '2021-01-01'
+AND plid IN ('##','##','##','##','##','##')
+and atrdt >= '2###-01-01'
 )
 where rowno=1),
 id AS (SELECT DISTINCT empi AS empi_id,id 
 from l2.pd_attribution pa 
 where atrdt >= '2021-01-01'
 and lower(atrl) = 'payer'
-and plid IN ('111','112','113','110','122','129'))
+and plid IN ('##','##','##','##','##','##'))
 SELECT * FROM attrib 
 RIGHT OUTER JOIN id on empi = id.empi_id
